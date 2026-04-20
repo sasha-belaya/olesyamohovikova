@@ -1,0 +1,157 @@
+/*
+ * DESIGN PHILOSOPHY: Luxury Magazine / Vogue Editorial Aesthetic
+ * Palette: White + Deep Black + Noble Red (#9B1C1C)
+ * Typography: Cormorant Garamond (serif, headings) + Jost (humanist sans, body)
+ * Layout: Asymmetric, alternating dark/light sections
+ * Signature: Thin red rule above section headings, large serif numerals
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Custom brand colors */
+  --color-brand-red: oklch(0.42 0.20 26);
+  --color-brand-red-dark: oklch(0.32 0.18 26);
+  --color-brand-black: oklch(0.08 0 0);
+  --color-brand-white: oklch(0.99 0 0);
+  --color-brand-gray: oklch(0.60 0.005 60);
+  --color-brand-light-gray: oklch(0.95 0 0);
+}
+
+:root {
+  --radius: 0rem;
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.08 0 0);
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.08 0 0);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.08 0 0);
+  --primary: oklch(0.08 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.08 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.55 0.005 60);
+  --accent: oklch(0.42 0.20 26);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.42 0.20 26);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+      max-width: 1440px;
+    }
+  }
+
+  /* Section heading with red rule above */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: oklch(0.42 0.20 26);
+    padding-top: 0.75rem;
+    border-top: 1px solid oklch(0.42 0.20 26);
+    display: inline-block;
+  }
+
+  /* Large serif display heading */
+  .display-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+  }
+
+  /* Stat number */
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+}
