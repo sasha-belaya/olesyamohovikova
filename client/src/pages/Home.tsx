@@ -267,7 +267,7 @@ export default function Home() {
               }}
             >
               <img
-                src="/manus-storage/olesya-photo_9c8a4aff.webp"
+                src="/olesya-photo.webp"
                 alt="Олеся Моховикова"
                 className="w-[90%] h-auto block mx-auto"
               />
